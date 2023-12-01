@@ -1,7 +1,8 @@
-# SimWrapper website
+This repo contains the staging build of SimWrapper, available at
 
-This repository contains the VSP implementation of SimWrapper, available at https://vsp.berlin/simwrapper.
+- https://simwrapper.github.io/staging
 
-This site was built from source files that can be found at https://github.com/simwrapper/simwrapper
+There is no source code in this repository. For SimWrapper source code, see
 
-To learn more about SimWrapper, see the documentation at https://simwrapper.github.io/docs/intro
+- https://github.com/simwrapper/simwrapper
+
