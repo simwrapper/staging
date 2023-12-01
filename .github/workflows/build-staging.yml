@@ -2,24 +2,18 @@ name: Remote Dispatch Action Responder
 
 on: [repository_dispatch]
 
+permissions:
+  contents: read
+  id-token: write
+  pages: write
+
 jobs:
-  ping-pong:
-    runs-on: ubuntu-latest
+  ping:
+    runs-on: ubuntu-22.04
     steps:
       - name: Event Information
         run: |
           echo "Event '${{ github.event.action }}' received from '${{ github.event.client_payload.repository }}'"
-
-#      - name: PONG - Dispatch response to received PING
-#        if: github.event.action == 'ping'
-#        run: |
-#          curl -X POST https://api.github.com/repos/marcnuri-demo/actions-remote-dispatch-a/dispatches \
-#          -H 'Accept: application/vnd.github.everest-preview+json' \
-#          -u ${{ secrets.ACCESS_TOKEN }} \
-#          --data '{"event_type": "pong", "client_payload": { "repository": "'"$GITHUB_REPOSITORY"'" }}'
-
-      - name: Checkout
-        uses: actions/checkout@v3
 
       - name: Set up Node
         uses: actions/setup-node@v3
@@ -39,10 +33,6 @@ jobs:
         run: |
           npm ci
 
-
-  build:
-    runs-on: ubuntu-22.04
-    steps:
       - name: Build
         run: npm run build
 
@@ -54,7 +44,7 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
-    needs: build
+    needs: ping
     environment:
       name: github-pages
       url: ${{steps.deployment.outputs.page_url}}
