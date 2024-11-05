@@ -26,7 +26,7 @@ jobs:
           git clone https://github.com/simwrapper/simwrapper
           cd simwrapper
           git checkout staging
-          sed -i "s#'/'#'/staging/'#" vite.config.ts
+          sed -i "s#'/'#'/staging/'#" vite.config.mts
           sed -i "s#'/'#'/staging/'#" public/404.html
           cd ..
           mv simwrapper/* .
