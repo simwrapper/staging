@@ -1,4 +1,4 @@
-name: Remote Dispatch Action Responder
+name: Remote Dispatch Responder
 
 on: [repository_dispatch]
 
@@ -16,9 +16,9 @@ jobs:
           echo "Event '${{ github.event.action }}' received from '${{ github.event.client_payload.repository }}'"
 
       - name: Set up Node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 18
           registry-url: https://registry.npmjs.org/
 
       - name: Fetch code
@@ -26,7 +26,8 @@ jobs:
           git clone https://github.com/simwrapper/simwrapper
           cd simwrapper
           git checkout staging
-          echo "staging.simwrapper.app" > public/CNAME
+          sed -i "s#'/'#'/staging/'#" vite.config.ts
+          sed -i "s#'/'#'/staging/'#" public/404.html
           cd ..
           mv simwrapper/* .
 
@@ -55,7 +56,7 @@ jobs:
         with:
           name: build-artifact
       - name: Set up Pages
-        uses: actions/configure-pages@v2
+        uses: actions/configure-pages@v5
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
@@ -63,4 +64,3 @@ jobs:
       - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v4
-
