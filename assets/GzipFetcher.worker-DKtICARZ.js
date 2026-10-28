@@ -1,0 +1,1 @@
+function e(e){return new Worker(`/assets/GzipFetcher.worker-CC6Gszp1.js`,{name:e?.name})}export{e as t};
