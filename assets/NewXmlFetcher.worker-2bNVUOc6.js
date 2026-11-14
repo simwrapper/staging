@@ -1,0 +1,1 @@
+function e(e){return new Worker(`///assets/NewXmlFetcher.worker-CW4mObdT.js`,{name:e?.name})}export{e as t};

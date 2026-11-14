@@ -1,0 +1,2 @@
+const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["assets/avro-browserify-Dgg4E5P3.js","assets/rolldown-runtime-BCiCTKAo.js"])))=>i.map(i=>d[i]);
+import{o as e}from"./rolldown-runtime-BCiCTKAo.js";import{a as t}from"./index-B0Y2GMqm.js";var n=null;async function r(){return n||=t(()=>import(`./avro-browserify-Dgg4E5P3.js`).then(t=>e(t.default,1)).then(e=>{let t=e?.default?.createBlobDecoder?e.default:globalThis.avro;if(!t?.createBlobDecoder)throw Error(`avro library failed to load`);return t}),__vite__mapDeps([0,1])).catch(e=>{throw n=null,e}),n}export{r as t};
